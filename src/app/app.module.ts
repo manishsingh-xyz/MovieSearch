@@ -8,7 +8,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDialogModule } from '@angular/material/dialog';
 
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { AppComponent } from './app.component';
@@ -36,7 +35,6 @@ import { HomeComponent } from './home/home.component';
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
-    MatDialogModule,
     environment.production ? ServiceWorkerModule.register('ngsw-worker.js') : [],
     AppRoutingModule
   ],

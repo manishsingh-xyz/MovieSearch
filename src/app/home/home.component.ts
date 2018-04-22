@@ -19,20 +19,15 @@ export class HomeComponent implements OnInit {
   }
 
   constructor(private itunesdataservice: ItunesdataService) { }
-
-  title = 'Movies Search ';
   searchedItem:string = '';
   selectedItem:string = 'movie';
-  iData =[];
-  color = 'primary';
-  mode = 'indeterminate';
-  value = 50;
+  iData = [];
   loader: boolean = false;
   noData: boolean = false;
 
   items = [
     { value: 'movie', viewValue: 'Music & Movies' },
-    { value: 'software', viewValue: 'Apps' }
+    { value: 'tv', viewValue: 'TV Shows' }
   ];
 
   SearchItunes(): void {

@@ -1,6 +1,6 @@
 
 .example-header-image {
-  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/ITunes_12.2_logo.png/480px-ITunes_12.2_logo.png');
+  background-image: url('https://cdn.iconscout.com/public/images/icon/free/png-512/itunes-logo-35942cc521d70efa-512x512.png');
   background-size: cover;
 }
 .button-row{
@@ -275,4 +275,11 @@ div.contentBoxWrapper {
 .searchWrapper {
     width: 98%;
     margin: 10px auto;
+}
+
+@media screen and (max-width: 720px) {
+    .contentBox{
+        width: 100%;
+        margin: 10px;
+    }
 }

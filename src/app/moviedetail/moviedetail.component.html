@@ -1,6 +1,9 @@
 <mat-toolbar color="primary">
-  {{ title }}
+  <button mat-button routerLink="/">Movies Search</button>
 </mat-toolbar>
+
+<div *ngIf="loader" id="loading"></div>
+
 <div class="header large border first lazyloaded" *ngIf="data">
   <div class="custom_bg">
     <div class="single_column">
