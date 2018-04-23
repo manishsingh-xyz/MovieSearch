@@ -1,11 +1,16 @@
 {
     "name": "Progressive Movie Search",
-    "short_name": "MovieSearch",
+    "short_name": "Movie Search",
     "description": "A Movie Search app for all",
     "icons": [
         {
             "src": "assets/icon-128x128.png",
             "sizes": "128x128",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/popcorn.png",
+            "sizes": "144x144",
             "type": "image/png"
         },
         {
@@ -26,6 +31,6 @@
     ],
     "start_url": "index.html",
     "display": "standalone",
-    "background_color": "#3f51b5",
-    "theme_color": "#3f51b5"
+    "background_color": "#ffffff",
+    "theme_color": "#673ab7"
 }
