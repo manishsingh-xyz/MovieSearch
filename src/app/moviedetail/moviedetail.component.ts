@@ -1,4 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 import { DomSanitizer, SafeUrl, SafeResourceUrl} from "@angular/platform-browser";
 import { ItunesdataService } from '../itunesdata.service';
@@ -26,11 +27,13 @@ export class MoviedetailComponent implements OnInit {
   data;
   imagePath;
   videoURL: SafeUrl;
-  title = 'Movies Search ';
   loader: boolean = true;
+  errormsg: string = null;
+
   constructor(private itunesdataservice: ItunesdataService,
               private route: ActivatedRoute,
-              private sanitizer : DomSanitizer) { }
+              private sanitizer : DomSanitizer,
+              public dialog: MatDialog) { }
 
   ngOnInit() {
     this.getFullDetails();
@@ -40,21 +43,55 @@ export class MoviedetailComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.itunesdataservice.getFullData(id)
       .subscribe((res: APIresponse) => {
+                this.loader = false;
+                this.errormsg = null;
+                console.log(res);
+                if(res){
+                  this.data = res;
+                  if(res.backdrop_path) {
+                    this.imagePath = 'https://image.tmdb.org/t/p/original' + res.backdrop_path;
+                  }
+                  if(res.videos.results[0].key) {
+                    let url = 'https://www.youtube.com/embed/' + res.videos.results[0].key;
+                    this.videoURL = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+                  }
+                }              
+              },
+          err => {
             this.loader = false;
-            console.log(res);
-            if(res){
-              this.data = res;
-              if(res.backdrop_path) {
-                this.imagePath = 'https://image.tmdb.org/t/p/original' + res.backdrop_path;
-              }
-              if(res.videos.results[0].key) {
-                let url = 'https://www.youtube.com/embed/' + res.videos.results[0].key;
-                this.videoURL = this.sanitizer.bypassSecurityTrustResourceUrl(url);
-              }
-            }              
+            console.log(err);
+            this.errormsg = err.error.status_message;
           }
       );
   }
+
+  openDialog(): void {
+    let dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      width: '500px',
+      data: { video: this.videoURL }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      //this.animal = result;
+    });
+  }
+}
+
+@Component({
+  selector: 'dialog-overview-example-dialog',
+  templateUrl: 'dialog-overview-example-dialog.html',
+})
+export class DialogOverviewExampleDialog {
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
 }
 
 

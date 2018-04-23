@@ -6,22 +6,17 @@
   <mat-card class="example-card">
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>Search Your Favourite  Movies </mat-card-title> 
+    <mat-card-title>Search Your Favourite Movies</mat-card-title> 
   </mat-card-header>
   <mat-card-content class="searchbox">
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Enter Movies to Search" [(ngModel)]="searchedItem">
-        </mat-form-field>
-        <!--<mat-form-field>
-          <mat-select placeholder="Select Music or Apps" [(ngModel)]="selectedItem">
-            <mat-option *ngFor="let item of items" [value]="item.value">
-              {{ item.viewValue }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>-->
-        <div class="button-row">
-          <button mat-raised-button color="primary" (click)="SearchItunes()">Search</button>
-        </div>
+         <form>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Enter Movies to Search" required [(ngModel)]="searchedItem" [ngModelOptions]="{standalone: true}">
+            </mat-form-field>
+            <div class="button-row">
+              <button type="submit" mat-raised-button color="primary" (click)="SearchItunes()">Search</button>
+            </div>
+        </form>  
   </mat-card-content>
 </mat-card>
 </div>
@@ -51,9 +46,13 @@
 
   <div class="searchWrapper" *ngIf="noData">
     <mat-card class="example-card">
-      <strong>No Movies found please try with some other word.</strong>
+      <strong>No movies found please try again or check your spelling.</strong>
       </mat-card>
-  </div>    
+  </div> 
+  <div class="searchWrapper" *ngIf="errormsg !== null">
+    <mat-card class="example-card" >
+      <strong>{{errormsg}}</strong>
+    </mat-card>
+  </div>
   
 </div>
-

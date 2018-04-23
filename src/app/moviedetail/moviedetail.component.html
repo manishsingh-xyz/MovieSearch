@@ -4,6 +4,12 @@
 
 <div *ngIf="loader" id="loading"></div>
 
+  <div class="searchWrapper" *ngIf="errormsg !== null">
+    <mat-card class="example-card">
+      <strong>{{errormsg}}</strong>
+    </mat-card>
+  </div>
+
 <div class="header large border first lazyloaded" *ngIf="data">
   <div class="custom_bg">
     <div class="single_column">
@@ -12,86 +18,25 @@
           <div class="image_content">
             <img class="poster" src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{data.poster_path}}" alt="{{ data.original_title }}">
           </div>
-        </div>
-        <div class="header_poster_wrapper">
-          <section class="header poster">
-            <div class="title" dir="auto">  
-             <span class="mrBtm15 blockCnt"><a href="#"><h2 class="14 movieTitle whiteColor">{{ data.original_title }}</h2></a> <span class="release_date whiteColor">({{ data.release_date | date:'MMM d, y' }})</span></span>
-        </div>
-<!--<ul class="auto actions">
-  
-    <li class="chart">
-      <div class="consensus">
-        <div class="outer_ring">
-          <div class="user_score_chart" data-percent="63.0" data-track-color="#423d0f" data-bar-color="#d2d531">
-            <div class="percent">
-              
-                <span class="icon icon-r63"></span>
-              
-            </div>
-          <canvas height="60" width="60"></canvas></div>
-        </div>
-      </div>
-      <div class="text">User<br>Score</div>
-    </li>
-  
-
-  
-    <li class="tooltip use_tooltip " title="Login to create and edit custom lists" data-role="tooltip">
-      <a class="no_click" href="#"><span class="glyphicons glyphicons-list x1"></span></a>
-    </li>
-  
-  
-    <li class="use_tooltip tooltip" title="Login to add this movie to your favorite list" data-role="tooltip">
-      <a id="favourite" class="no_click add_to_account_list favourite false" href="#"><span class="glyphicons glyphicons-heart x1"></span></a>
-    </li>
-  
-  
-    <li class="use_tooltip tooltip" title="Login to add this movie to your watchlist" data-role="tooltip">
-      <a id="watchlist" class="no_click add_to_account_list watchlist false" href="#"><span class="glyphicons glyphicons-bookmark x1"></span></a>
-    </li>
-  
-  
-    <li class="tooltip use_tooltip rating" title="Login to rate this movie" data-role="tooltip">
-      <a id="rate_it" class="no_click rating false" href="#"><span class="glyphicons glyphicons-star x1"></span></a>
-    </li>
-  
-
-  
-    
-      <li class="video none">
-        <a class="no_click play_trailer" href="#" data-id="HusPt_1-qto"><span class="glyphicons glyphicons-play"></span> Play Trailer</a>
-      </li>
-    
-  
-</ul>-->
-
-            <div class="header_info">
-              <h3 dir="auto" class="whiteColor basicText mrNone">Overview</h3>
-              <div class="overview" dir="auto">                
-                  <p class="whiteColor basicText mrNone">{{ data.overview }}</p>
-              </div>
-            </div>
-            <div class="player">
-                <iframe  width="560" height="315" [src]="videoURL" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>
-            </div>
-          </section>
-        </div>
-      </section>
+          <div style='clear:both'></div>
+</div>
+<div class="header_poster_wrapper">
+  <div class="title" dir="auto">
+    <span class="mrBtm15 blockCnt"><a href="#"><h2 class="14 movieTitle whiteColor">{{ data.original_title }}</h2></a> <span class="release_date whiteColor">({{ data.release_date | date:'MMM d, y' }})</span></span>
+  </div>
+  <div class="header_info">
+    <h3 dir="auto" class="whiteColor basicText mrNone">Overview</h3>
+    <div class="overview" dir="auto">
+      <p class="whiteColor basicText mrNone">{{ data.overview }}</p>
+    </div>
+    <div class="btclass">
+      <button mat-raised-button color="primary" (click)="openDialog()">Play Trailer</button>
     </div>
   </div>
 </div>
-<!-- 
-<ol>
-  <li>
-    <mat-form-field>
-      <input matInput [(ngModel)]="name" placeholder="What's your name?">
-    </mat-form-field>
-  </li>
-  <li>
-    <button mat-raised-button (click)="openDialog()">Pick one</button>
-  </li>
-  <li *ngIf="animal">
-    You chose: <i>{{animal}}</i>
-  </li>
-</ol> -->
+<div style='clear:both'></div>
+</section>
+<div style='clear:both'></div>
+</div>
+</div>
+</div>

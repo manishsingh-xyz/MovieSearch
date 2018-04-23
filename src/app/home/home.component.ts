@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit {
   iData = [];
   loader: boolean = false;
   noData: boolean = false;
+  errormsg: string = null;
 
   items = [
     { value: 'movie', viewValue: 'Music & Movies' },
@@ -36,12 +37,19 @@ export class HomeComponent implements OnInit {
       this.noData = false;
       this.itunesdataservice.getData(this.searchedItem,this.selectedItem)
             .subscribe((res: APIresponse) => {
+                this.errormsg = null;
                 this.loader = false;
                 if(res.results.length === 0){
                   this.noData = true;
                 }                 
                 this.iData = res.results;
-                console.log("movie",this.iData);
-            });
+                console.log("movie   ",this.iData);
+              },
+              err => {
+                this.loader = false;
+                console.log(err);
+                this.errormsg = err.error.errors[0];
+              }
+            );
   } 
 }

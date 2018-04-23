@@ -11,7 +11,6 @@ export class ItunesdataService {
 
   getData(query,category) {
     var URL = 'https://api.themoviedb.org/3/search/' + category + '?api_key='+ APIkey+'&query=' + query;
-    // var URL = 'https://itunes.apple.com/search?term=' + query +'&country=us&entity=' + category;
     return this.http.get(URL);
   } 
 
