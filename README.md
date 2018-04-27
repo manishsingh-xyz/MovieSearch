@@ -1,27 +1,68 @@
-# MovieSearch
+# PWAs using Angular 5
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
+This is a sample for building an progressive web app based on the design principles of Angular 5 which has inbuilt support of Service workers.
 
-## Development server
+# Why PWA ?
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+* A progressive web app (PWA) delivers an app-like experience through your mobile phone’s browser but has the same flexibility and gestures as a native application. Because they are powered by mobile browsers, they are not particular to any one device, meaning developers no longer need to write separate code for Android and Apple devices.
 
-## Code scaffolding
+<p align="center">
+    <img  alt="PWA using Angular5" src="./pwa.png" class="img-responsive">
+</p>
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+# Demo
+  * https://manishsingh-xyz.github.io/MovieSearch/
+ 
 
-## Build
+# How to run on local machine
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+* This project is based on the Angular 5 so you need to install latest angular CLI.
 
-## Running unit tests
+## Using `npm`
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Check out and build the [PWAs-Using-Angular5](https://github.com/ERS-HCL/pwas-using-angular5.git)
+```bash
+git clone https://github.com/ERS-HCL/pwas-using-angular5.git
+cd pwas-using-angular5
+npm install
+```
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
+```bash
+# Run project on local serve
+ng serve -o
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Now, once you update your library source code it will automatically be re-compiled and your project will be re-built so you may see library changes instantly.
+
+# Final Production Build
+
+* Create a new repository on github.com 
+* Go to the terminal and run the following:
+
+```bash 
+git add .
+git commit -m "Upload project to github"
+git remote add origin git@github.com:{username}/{repo name}.git
+git push --set-upstream origin master
+```
+
+* Build a production version of application
+* After build, we can see a new ‘/dist’ folder with our bundled app.
+```
+ng build --prod --base-href "/{Repo name}/"
+```
+
+#Limitation
+
+* As of now PWA is supported by all the modern browsers.
+* Below is the list for all the supported browsers:
+
+<p align="center">
+    <img  alt="PWA using Angular5" src="./browser.png" class="img-responsive">
+</p>
+
+# License
+ [MIT](/LICENSE)
+
