@@ -30,8 +30,8 @@ npm install
 
 
 ```bash
-# Run project on local serve
-ng serve -o
+# Run project on local server
+ng serve  //Open http://localhost:4200/
 ```
 
 Now, once you update your library source code it will automatically be re-compiled and your project will be re-built so you may see library changes instantly.
